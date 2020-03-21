@@ -1,7 +1,15 @@
-import React from "react";
+import React from 'react';
 
-function App() {
-  return <div></div>;
-}
+import { ItemTable } from './components/Item/ItemTable';
+import { getItems } from './dataSet';
+import { Item } from './types';
 
-export default App;
+export const App = () => {
+  const items: Item[] = getItems();
+
+  return (
+    <>
+      <ItemTable items={items} />
+    </>
+  );
+};
