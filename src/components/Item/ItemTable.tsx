@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components/macro';
+import { useObserver } from 'mobx-react';
 
 import { Item } from '../../types';
 import { Title } from './Title';
@@ -12,30 +13,43 @@ type Props = {
 };
 
 export const ItemTable: React.FC<Props> = ({ items, tableName }) => {
-  const headings = Object.keys(items[0].data);
-  const rowData = items.map(item => Object.values(item.data));
-  const kidsList = items.map(item => item.kids);
+  return useObserver(() => {
+    if (items.length) {
+      // assumption - items on the same level have consistent data keys
+      const headings = Object.keys(items[0].data);
+      const rowsToDisplay = items.map(item => ({ cellsData: Object.values(item.data), itemId: item.id }));
+      const kidsList = items.map(item => item.kids);
 
-  return (
-    <StyledItemTable cellPadding={10}>
-      <thead>
-        <tr>
-          <StyledTableName>{tableName}</StyledTableName>
-        </tr>
-        <StyledHeading>
-          <th />
-          {headings.map((title, idx) => (
-            <Title title={title} key={idx} />
-          ))}
-        </StyledHeading>
-      </thead>
-      <tbody>
-        {rowData.map((cellsData, idx) => (
-          <Row cellsData={cellsData} kids={kidsList[idx]} key={idx} rootColumnCount={headings.length + 1} /> // +1 to accomodate the the column for expand button
-        ))}
-      </tbody>
-    </StyledItemTable>
-  );
+      return (
+        <StyledItemTable cellPadding={10}>
+          <thead>
+            <tr>
+              <StyledTableName>{tableName}</StyledTableName>
+            </tr>
+            <StyledHeading>
+              <StyledButtonsHeader />
+              {headings.map((title, idx) => (
+                <Title title={title} key={idx} />
+              ))}
+            </StyledHeading>
+          </thead>
+          <tbody>
+            {rowsToDisplay.map(({ cellsData, itemId }, idx) => (
+              <Row
+                cellsData={cellsData}
+                kids={kidsList[idx]}
+                itemId={itemId}
+                rootColumnCount={headings.length + 1 /* +1 to accomodate the column for expand button*/}
+                key={itemId}
+              />
+            ))}
+          </tbody>
+        </StyledItemTable>
+      );
+    }
+
+    return null;
+  });
 };
 
 const StyledItemTable = styled.table`
@@ -52,4 +66,9 @@ const StyledHeading = styled.tr`
 const StyledTableName = styled.td`
   font-size: 25px;
   font-weight: bold;
+`;
+
+const StyledButtonsHeader = styled.th`
+  /* Ensures all nested tables have equally wide first column which contains buttons */
+  width: 1px;
 `;

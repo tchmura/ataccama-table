@@ -1,15 +1,19 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useObserver } from 'mobx-react';
 
 import { ItemTable } from './components/Item/ItemTable';
-import { getItems } from './dataSet';
-import { Item } from './types';
+import { useStores } from './hooks/useStores';
 
 export const App = () => {
-  const items: Item[] = getItems();
+  const { itemStore } = useStores();
 
-  return (
+  useEffect(() => {
+    itemStore.getEnrichedItems();
+  }, [itemStore]);
+
+  return useObserver(() => (
     <>
-      <ItemTable items={items} />
+      <ItemTable items={itemStore.enrichedItems} />
     </>
-  );
+  ));
 };

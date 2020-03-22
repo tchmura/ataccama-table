@@ -11,4 +11,5 @@ export type Kids = {
 export type Item = {
   data: Data;
   kids: Kids | {};
+  id: string;
 };
