@@ -1,24 +1,12 @@
-import { observable, action } from 'mobx';
-import { v4 as uuidV4 } from 'uuid';
+import { observable, action, flow } from 'mobx';
 
 import { getItems } from '../dataSet';
 import { Item, Kids } from '../types';
+import { enrichItemsWithId } from '../utils';
 
 export class ItemStore {
   @observable enrichedItems: Item[] = [];
-
-  enrichKidsWithId(kids: Kids | {}) {
-    const enrichedKids: Kids = {};
-
-    return Object.entries(kids).reduce((acc, kid) => {
-      acc[kid[0]] = { records: this.enrichItemsWithId(kid[1].records) };
-      return acc;
-    }, enrichedKids);
-  }
-
-  enrichItemsWithId(items: Omit<Item, 'id'>[]): Item[] {
-    return items.map(item => ({ ...item, id: uuidV4(), kids: this.enrichKidsWithId(item.kids) }));
-  }
+  @observable state = 'pending';
 
   filterKidsById(kids: Kids | {}, idToFilter: string) {
     const filteredKids: Kids = {};
@@ -34,10 +22,15 @@ export class ItemStore {
     return itemsFilteredOnCurrentLevel.map(item => ({ ...item, kids: this.filterKidsById(item.kids, idToFilter) }));
   }
 
-  @action getEnrichedItems() {
-    const items = getItems();
-    this.enrichedItems = this.enrichItemsWithId(items);
-  }
+  getEnrichedItems = flow(function*(this: ItemStore) {
+    this.enrichedItems = [];
+    this.state = 'pending';
+
+    const items: Omit<Item, 'id'>[] = yield getItems();
+
+    this.enrichedItems = enrichItemsWithId(items);
+    this.state = 'done';
+  });
 
   @action deleteItem(itemId: string) {
     this.enrichedItems = this.filterItemsById(this.enrichedItems, itemId);

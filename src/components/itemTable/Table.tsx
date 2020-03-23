@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components/macro';
+import styled from 'styled-components';
 import { useObserver } from 'mobx-react';
 
 import { Item } from '../../types';
@@ -12,7 +12,7 @@ type Props = {
   rootColumnCount?: number;
 };
 
-export const ItemTable: React.FC<Props> = ({ items, tableName }) => {
+export const Table: React.FC<Props> = ({ items, tableName }) => {
   return useObserver(() => {
     if (items.length) {
       // assumption - items on the same level have consistent data keys
@@ -21,7 +21,7 @@ export const ItemTable: React.FC<Props> = ({ items, tableName }) => {
       const kidsList = items.map(item => item.kids);
 
       return (
-        <StyledItemTable cellPadding={10}>
+        <StyledTable data-testid="item-table" cellPadding={10}>
           <thead>
             <tr>
               <StyledTableName>{tableName}</StyledTableName>
@@ -44,7 +44,7 @@ export const ItemTable: React.FC<Props> = ({ items, tableName }) => {
               />
             ))}
           </tbody>
-        </StyledItemTable>
+        </StyledTable>
       );
     }
 
@@ -52,7 +52,7 @@ export const ItemTable: React.FC<Props> = ({ items, tableName }) => {
   });
 };
 
-const StyledItemTable = styled.table`
+const StyledTable = styled.table`
   border-collapse: collapse;
   width: 100%;
   margin-bottom: 20px;
@@ -69,6 +69,6 @@ const StyledTableName = styled.td`
 `;
 
 const StyledButtonsHeader = styled.th`
-  /* Ensures all nested tables have equally wide first column which contains buttons */
+  /* Explicit width ensures all nested tables have equally wide first column which contains buttons */
   width: 1px;
 `;

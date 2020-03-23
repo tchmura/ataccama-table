@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import styled from 'styled-components/macro';
+import styled from 'styled-components';
 
 import { Cell } from './Cell';
 import { Kids } from '../../types';
-import { ItemTable } from './ItemTable';
+import { Table } from './Table';
 import { useStores } from '../../hooks/useStores';
 
 type Props = {
@@ -13,7 +13,7 @@ type Props = {
   rootColumnCount?: number;
 };
 
-const doesKidsHaveRecords = (kids: Kids) => {
+export const doesKidsHaveRecords = (kids: Kids) => {
   return !!Object.values(kids)
     .map(value => value.records)
     .flat(Infinity).length;
@@ -44,7 +44,7 @@ export const Row: React.FC<Props> = ({ cellsData, kids, rootColumnCount, itemId 
         <tr>
           <td colSpan={rootColumnCount}>
             {kidsContainerNames.map((name, idx) => (
-              <ItemTable items={kids[name].records} tableName={name} key={idx} rootColumnCount={rootColumnCount} />
+              <Table items={kids[name].records} tableName={name} key={idx} rootColumnCount={rootColumnCount} />
             ))}
           </td>
         </tr>

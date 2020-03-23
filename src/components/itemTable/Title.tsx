@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components/macro';
+import styled from 'styled-components';
 
 export const Title: React.FC<{ title: string }> = ({ title }) => {
   return <StyledTitle>{title}</StyledTitle>;

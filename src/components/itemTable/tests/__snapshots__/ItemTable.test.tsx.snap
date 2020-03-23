@@ -1,0 +1,204 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Table rendering should render correctly 1`] = `
+.c8 {
+  border-right: solid 1px;
+  border-left: solid 1px;
+}
+
+.c4 {
+  font-size: 20px;
+  font-weight: bold;
+  padding: 5px 10px;
+}
+
+.c0 {
+  border-collapse: collapse;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.c2 {
+  background-color: lightgray;
+  border: solid 1px;
+}
+
+.c1 {
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.c3 {
+  width: 1px;
+}
+
+.c5 {
+  border: solid 1px;
+}
+
+.c6 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+  -webkit-justify-content: space-evenly;
+  -ms-flex-pack: space-evenly;
+  justify-content: space-evenly;
+}
+
+.c6 button {
+  width: 100%;
+  border-radius: 5px;
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+.c6 button:last-child {
+  margin-right: 0;
+}
+
+.c7 {
+  background-color: red;
+  color: white;
+}
+
+<table
+  cellpadding="10"
+  class="c0"
+  data-testid="item-table"
+>
+  <thead>
+    <tr>
+      <td
+        class="c1"
+      />
+    </tr>
+    <tr
+      class="c2"
+    >
+      <th
+        class="c3"
+      />
+      <th
+        class="c4"
+      >
+        Identification number
+      </th>
+      <th
+        class="c4"
+      >
+        Name
+      </th>
+      <th
+        class="c4"
+      >
+        Gender
+      </th>
+      <th
+        class="c4"
+      >
+        Risk
+      </th>
+      <th
+        class="c4"
+      >
+        Hair length
+      </th>
+      <th
+        class="c4"
+      >
+        IQ
+      </th>
+      <th
+        class="c4"
+      >
+        Admission date
+      </th>
+      <th
+        class="c4"
+      >
+        Last breakdown
+      </th>
+      <th
+        class="c4"
+      >
+        Yearly fee
+      </th>
+      <th
+        class="c4"
+      >
+        Knows the Joker?
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr
+      class="c5"
+    >
+      <td
+        class="c6"
+      >
+        <button
+          class="c7"
+        >
+          delete
+        </button>
+        <button>
+          Expand
+        </button>
+      </td>
+      <td
+        class="c8"
+      >
+        34
+      </td>
+      <td
+        class="c8"
+      >
+        Joqmo
+      </td>
+      <td
+        class="c8"
+      >
+        female
+      </td>
+      <td
+        class="c8"
+      >
+        BITES
+      </td>
+      <td
+        class="c8"
+      >
+        6.2000000000
+      </td>
+      <td
+        class="c8"
+      >
+        98
+      </td>
+      <td
+        class="c8"
+      >
+        Mon Dec 13 00:00:00 CET 1993
+      </td>
+      <td
+        class="c8"
+      >
+        Wed Dec 24 07:14:50 CET 2014
+      </td>
+      <td
+        class="c8"
+      >
+        67035
+      </td>
+      <td
+        class="c8"
+      >
+        true
+      </td>
+    </tr>
+  </tbody>
+</table>
+`;
