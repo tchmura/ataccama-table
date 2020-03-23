@@ -1,0 +1,19 @@
+{
+  "files": {
+    "main.js": "/ataccama-table/static/js/main.1ae9c3ae.chunk.js",
+    "main.js.map": "/ataccama-table/static/js/main.1ae9c3ae.chunk.js.map",
+    "runtime-main.js": "/ataccama-table/static/js/runtime-main.593b7e2c.js",
+    "runtime-main.js.map": "/ataccama-table/static/js/runtime-main.593b7e2c.js.map",
+    "static/js/2.32ff90e6.chunk.js": "/ataccama-table/static/js/2.32ff90e6.chunk.js",
+    "static/js/2.32ff90e6.chunk.js.map": "/ataccama-table/static/js/2.32ff90e6.chunk.js.map",
+    "index.html": "/ataccama-table/index.html",
+    "precache-manifest.e9ab40702571c4f71a844e13e3a80404.js": "/ataccama-table/precache-manifest.e9ab40702571c4f71a844e13e3a80404.js",
+    "service-worker.js": "/ataccama-table/service-worker.js",
+    "static/js/2.32ff90e6.chunk.js.LICENSE.txt": "/ataccama-table/static/js/2.32ff90e6.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.593b7e2c.js",
+    "static/js/2.32ff90e6.chunk.js",
+    "static/js/main.1ae9c3ae.chunk.js"
+  ]
+}
