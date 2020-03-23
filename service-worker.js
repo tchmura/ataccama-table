@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/ataccama-table/precache-manifest.e9ab40702571c4f71a844e13e3a80404.js"
+  "/ataccama-table/precache-manifest.b80fa03c5d1f92ece61818d14789cd0f.js"
 );
 
 self.addEventListener('message', (event) => {
